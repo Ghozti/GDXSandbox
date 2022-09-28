@@ -31,4 +31,4 @@ public class Entity {
         this.xPos = xPos;
         this.yPos = yPos;
     }
-}
+}     
