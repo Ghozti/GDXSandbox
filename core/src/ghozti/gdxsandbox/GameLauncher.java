@@ -1,16 +1,37 @@
 package ghozti.gdxsandbox;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.ScreenUtils;
+import ghozti.gdxsandbox.player.Player;
 
 public class GameLauncher implements Screen {
+
+    Player player;
+    Batch batch;
+
     @Override
     public void show() {
+        batch = new SpriteBatch();
+        player = new Player(100,100,32,32,5,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32),batch);
+        Gdx.input.setInputProcessor(player);
+    }
 
+    public void update(){
+        player.updateEntity();
     }
 
     @Override
     public void render(float delta) {
-
+        ScreenUtils.clear(0, 0,0, 1f);
+        update();
+        batch.begin();
+        player.drawEntity();
+        batch.end();
     }
 
     @Override
@@ -35,6 +56,6 @@ public class GameLauncher implements Screen {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
     }
 }
