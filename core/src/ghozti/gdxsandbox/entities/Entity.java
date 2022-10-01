@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.awt.*;
 
-public class Entity {
+public abstract class Entity {
 
     float xPos,yPos;
     float width , height;
@@ -46,4 +46,6 @@ public class Entity {
     public boolean isHitBoxTriggered(Rectangle rectangle){
         return hitbox.overlaps(rectangle);
     }
+
+    public abstract void updateEntity();
 }     
