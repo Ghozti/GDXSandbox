@@ -5,32 +5,34 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import ghozti.gdxsandbox.entities.Entity;
 
 public class Player extends Entity implements InputProcessor {
 
     boolean moveUp, moveDown, moveLeft, moveRight;
-    boolean stopX, stopY;
+    float xDirection, yDirection;
 
-    public Player(float xPos, float yPos, float width, float height, float speed, float health, Texture texture, Rectangle rectangle, Batch batch) {
-        super(xPos, yPos, width, height, speed, health, texture, rectangle, batch);
+    public Player(float xPos, float yPos, float width, float height, float speed, float health, Texture texture, Rectangle rectangle, Circle circle, Batch batch) {
+        super(xPos, yPos, width, height, speed, health, texture, rectangle, circle, batch);
     }
 
     @Override
     public void updateEntity() {
-        if (moveUp && !stopY){
-            moveEntity(0,speed);
+        if (moveUp){
+            yDirection = speed;
+        }else if (moveDown){
+            yDirection = -speed;
         }
-        if (moveDown && !stopY){
-            moveEntity(0,-speed);
+        if (moveLeft){
+            xDirection = -speed;
+        }else if (moveRight){
+            xDirection = speed;
         }
-        if (moveLeft && !stopX){
-            moveEntity(-speed,0);
-        }
-        if (moveRight && !stopX){
-            moveEntity(speed,0);
-        }
+        moveEntity(xDirection,yDirection);
+        xDirection = 0;
+        yDirection = 0;
     }
 
     @Override
@@ -42,19 +44,15 @@ public class Player extends Entity implements InputProcessor {
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.W){
             moveUp = true;
-            stopY = false;
         }
         if (keycode == Input.Keys.A){
             moveLeft = true;
-            stopX  = false;
         }
         if (keycode == Input.Keys.S){
             moveDown = true;
-            stopY = false;
         }
         if (keycode == Input.Keys.D){
             moveRight = true;
-            stopX = false;
         }
         return false;
     }
@@ -63,19 +61,15 @@ public class Player extends Entity implements InputProcessor {
     public boolean keyUp(int keycode) {
         if (keycode == Input.Keys.W){
             moveUp = false;
-            stopY = true;
         }
         if (keycode == Input.Keys.A){
             moveLeft = false;
-            stopX = true;
         }
         if (keycode == Input.Keys.S){
-            moveDown = true;
-            stopY = true;
+            moveDown = false;
         }
         if (keycode == Input.Keys.D){
-            moveRight = true;
-            stopX  = true;
+            moveRight = false;
         }
         return false;
     }

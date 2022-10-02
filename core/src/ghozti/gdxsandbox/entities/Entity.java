@@ -3,9 +3,8 @@ package ghozti.gdxsandbox.entities;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
-
-import java.awt.*;
 
 public abstract class Entity {
 
@@ -13,11 +12,12 @@ public abstract class Entity {
     public float width , height;
     public float speed;
     public float health;
-    public Texture texture;
+    public Texture texture, hitboxTexture, circleTexture;
     public com.badlogic.gdx.math.Rectangle hitbox;
+    public Circle circle;
     public Batch batch;
 
-    public Entity(float xPos, float yPos, float width, float height, float speed,float health, Texture texture, Rectangle rectangle, Batch batch){
+    public Entity(float xPos, float yPos, float width, float height, float speed,float health, Texture texture, Rectangle rectangle, Circle circle, Batch batch){
         this.xPos = xPos;
         this.yPos = yPos;
         this.width = width;
@@ -26,10 +26,15 @@ public abstract class Entity {
         this.health = health;
         this.texture = texture;
         this.hitbox = rectangle;
+        this.circle = circle;
         this.batch = batch;
     }
 
     public void moveEntity(float xChange, float yChange){
+        if (xChange != 0 && yChange != 0){
+            xChange = xChange/1.5f;
+            yChange = yChange/1.5f;
+        }
         this.xPos += xChange * Gdx.graphics.getDeltaTime();
         this.yPos += yChange * Gdx.graphics.getDeltaTime();
     }
@@ -49,6 +54,18 @@ public abstract class Entity {
 
     public boolean isHitBoxTriggered(Rectangle rectangle){
         return hitbox.overlaps(rectangle);
+    }
+
+    public boolean isCircleTriggered(Circle circle){
+        return this.circle.overlaps(circle);
+    }
+
+    public void drawHitBox(){
+
+    }
+
+    public void drawCircle(){
+
     }
 
     public abstract void updateEntity();

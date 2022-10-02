@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.gdxsandbox.player.Player;
@@ -17,7 +18,7 @@ public class GameLauncher implements Screen {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        player = new Player(100,100,32,32,5,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32),batch);
+        player = new Player(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,32), batch);
         Gdx.input.setInputProcessor(player);
     }
 
