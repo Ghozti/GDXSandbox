@@ -28,6 +28,9 @@ public abstract class Entity {
         this.hitbox = rectangle;
         this.circle = circle;
         this.batch = batch;
+
+        hitboxTexture = new Texture(Gdx.files.internal("hitbox.png"));
+        circleTexture = new Texture(Gdx.files.internal("circle.png"));
     }
 
     public void moveEntity(float xChange, float yChange){
@@ -61,11 +64,11 @@ public abstract class Entity {
     }
 
     public void drawHitBox(){
-
+        batch.draw(hitboxTexture,xPos,yPos,width,height);
     }
 
     public void drawCircle(){
-
+        batch.draw(circleTexture,(width == circle.radius ? xPos : xPos - ((circle.radius/2)-width/2)),(width == circle.radius ? yPos : yPos - ((circle.radius/2)-height/2)),circle.radius,circle.radius);
     }
 
     public abstract void updateEntity();
