@@ -20,6 +20,6 @@ public class Enemy extends Entity {
 
     @Override
     public void drawEntity() {
-
+        batch.draw(texture,xPos,yPos,width,height);
     }
 }

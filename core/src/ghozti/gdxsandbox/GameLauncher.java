@@ -18,7 +18,7 @@ public class GameLauncher implements Screen {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        player = new Player(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,64*2), batch);
+        player = new Player(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,132*2), batch);
         Gdx.input.setInputProcessor(player);
     }
 

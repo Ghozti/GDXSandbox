@@ -68,9 +68,8 @@ public abstract class Entity {
     }
 
     public void drawCircle(){
-        batch.draw(circleTexture,(width == circle.radius ? xPos : xPos - ((circle.radius)-width/2)),(width == circle.radius ? yPos : yPos - ((circle.radius)-height/2)),circle.radius * 2,circle.radius * 2);
+        batch.draw(circleTexture,(width == circle.radius ? xPos : xPos - ((circle.radius/2)-width/2)),(width == circle.radius ? yPos : yPos - ((circle.radius/2)-height/2)),circle.radius,circle.radius);
     }
-
     public void updateHitBox(){
 
     }
