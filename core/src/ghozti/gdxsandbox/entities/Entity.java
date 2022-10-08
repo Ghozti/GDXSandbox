@@ -65,17 +65,21 @@ public abstract class Entity {
 
     public void drawHitBox(){
         batch.draw(hitboxTexture,xPos,yPos,width,height);
+        updateHitBox();
     }
 
     public void drawCircle(){
-        batch.draw(circleTexture,(width == circle.radius ? xPos : xPos - ((circle.radius/2)-width/2)),(width == circle.radius ? yPos : yPos - ((circle.radius/2)-height/2)),circle.radius,circle.radius);
+        batch.draw(circleTexture,(width == circle.radius ? xPos : xPos - ((circle.radius)-width/2)),(width == circle.radius ? yPos : yPos - ((circle.radius)-height/2)),circle.radius*2,circle.radius*2);
+        updateCircle();
     }
     public void updateHitBox(){
-
+        hitbox.x = xPos;
+        hitbox.y = yPos;
     }
 
     public void updateCircle(){
-
+        circle.x = (width == circle.radius ? xPos : xPos - ((circle.radius/2)-width/2));
+        circle.y = (width == circle.radius ? yPos : yPos - ((circle.radius/2)-height/2));
     }
 
     public abstract void updateEntity();

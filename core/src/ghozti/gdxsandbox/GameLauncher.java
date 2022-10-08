@@ -8,22 +8,27 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
+import ghozti.gdxsandbox.Enemy.Enemy;
 import ghozti.gdxsandbox.player.Player;
 
 public class GameLauncher implements Screen {
 
     Player player;
+    Enemy enemy;
     Batch batch;
 
     @Override
     public void show() {
         batch = new SpriteBatch();
-        player = new Player(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,132*2), batch);
+        player = new Player(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,132), batch);
+        enemy = new Enemy(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,132), batch);
         Gdx.input.setInputProcessor(player);
     }
 
     public void update(){
         player.updateEntity();
+
+        System.out.println(player.circle.overlaps(enemy.circle));
     }
 
     @Override
@@ -34,6 +39,9 @@ public class GameLauncher implements Screen {
         player.drawEntity();
         player.drawHitBox();
         player.drawCircle();
+        enemy.drawEntity();
+        enemy.drawHitBox();
+        enemy.drawCircle();
         batch.end();
     }
 
