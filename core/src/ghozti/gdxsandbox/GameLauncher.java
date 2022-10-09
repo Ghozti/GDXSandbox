@@ -22,13 +22,14 @@ public class GameLauncher implements Screen {
         batch = new SpriteBatch();
         player = new Player(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,132), batch);
         enemy = new Enemy(32,32,32,32,300,100,new Texture(Gdx.files.internal("entityStand.png")), new Rectangle(32,32,32,32), new Circle(32,32,132), batch);
+        enemy.setPath(player);
         Gdx.input.setInputProcessor(player);
     }
 
     public void update(){
         player.updateEntity();
-
-        System.out.println(player.circle.overlaps(enemy.circle));
+        enemy.updateEntity();
+        //System.out.println(player.circle.overlaps(enemy.circle));
     }
 
     @Override
