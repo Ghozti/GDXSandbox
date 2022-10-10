@@ -12,7 +12,6 @@ import java.awt.*;
 
 public class Enemy extends Entity {
 
-    Player player;
     CircleTriggerPath path;
 
     public Enemy(float xPos, float yPos, float width, float height, float speed, float health, Texture texture, Rectangle rectangle , Circle circle, Batch batch) {

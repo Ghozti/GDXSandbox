@@ -16,7 +16,6 @@ public class CircleTriggerPath {
     public void update(){
         if (triggerDetect()){
             moveEntity();
-            System.out.println("***");
         }
     }
 
