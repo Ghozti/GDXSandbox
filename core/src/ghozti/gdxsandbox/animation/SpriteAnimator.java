@@ -23,50 +23,50 @@ public class SpriteAnimator {
 
     public void update(String state) {
         this.walkState = state;
-        if (delta > 500){
-            delta = 0;
-        }else {
-            delta++;
-        }
-        if (walkState.equals("U")) {
-            if (delta % 500 == 0) {
-                entity.texture = topWalk.get(index);
-                if (index > topWalk.size() - 1) {
-                    index = 0;
-                } else {
-                    index++;
-                }
-            }
-        }
-        if (walkState.equals("D")) {
-            if (delta % 500 == 0) {
-                entity.texture = bottomWalk.get(index);
-                if (index > bottomWalk.size() - 1) {
-                    index = 0;
-                } else {
-                    index++;
-                }
-            }
-        }
-        if (walkState.equals("L")) {
-            if (delta % 500 == 0) {
-                entity.texture = leftWalk.get(index);
-                if (index > leftWalk.size() - 1) {
-                    index = 0;
-                } else {
-                    index++;
-                }
-            }
-        }
-        if (walkState.equals("R")) {
-            if (delta % 500 == 0) {
-                entity.texture = rightWalk.get(index);
-                if (index > rightWalk.size() - 1) {
-                    index = 0;
-                } else {
-                    index++;
-                }
-            }
-        }
+        //if (delta > 500){
+        //    delta = 0;
+        //}else {
+        //    delta++;
+        //}
+        //if (walkState.equals("U")) {
+        //    if (delta % 500 == 0) {
+        //        entity.texture = topWalk.get(index);
+        //        if (index > topWalk.size() - 1) {
+        //            index = 0;
+        //        } else {
+        //            index++;
+        //        }
+        //    }
+        //}
+        //if (walkState.equals("D")) {
+        //    if (delta % 500 == 0) {
+        //        entity.texture = bottomWalk.get(index);
+        //        if (index > bottomWalk.size() - 1) {
+        //            index = 0;
+        //        } else {
+        //            index++;
+        //        }
+        //    }
+        //}
+        //if (walkState.equals("L")) {
+        //    if (delta % 500 == 0) {
+        //        entity.texture = leftWalk.get(index);
+        //        if (index > leftWalk.size() - 1) {
+        //            index = 0;
+        //        } else {
+        //            index++;
+        //        }
+        //    }
+        //}
+        //if (walkState.equals("R")) {
+        //    if (delta % 500 == 0) {
+        //        entity.texture = rightWalk.get(index);
+        //        if (index > rightWalk.size() - 1) {
+        //            index = 0;
+        //        } else {
+        //            index++;
+        //        }
+        //    }
+        //}
     }
 }

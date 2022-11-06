@@ -8,8 +8,6 @@ import ghozti.gdxsandbox.NPC.CircleTriggerPath;
 import ghozti.gdxsandbox.entities.Entity;
 import ghozti.gdxsandbox.player.Player;
 
-import java.awt.*;
-
 public class Enemy extends Entity {
 
     CircleTriggerPath path;
